@@ -1,0 +1,18 @@
+[project]
+name = "miv"
+description = "medical image visualizations"
+version = "0.1.0"
+authors = [
+    { name = "Christian Hinge", email = "christian.surf@outlook.dk" }
+]
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "opencv-python",
+    "torch>2.0"
+]
+
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
