@@ -45,3 +45,19 @@ def remove_white_space(img,horizontal_padding=6,vertical_padding=6):
     ix[:-vertical_padding] &= ix[vertical_padding:]
     img = img[~ix,:,:]
     return img
+
+import cv2
+
+
+def concat_images(img_a, img_b,axis=0):
+    #Resize image_b to to image_a to match axis size
+    if axis == 0:
+        if img_a.shape[1] != img_b.shape[1]:
+            img_b = cv2.resize(img_b, (img_a.shape[1], img_b.shape[0]))
+        return np.concatenate((img_a,img_b),axis=0)
+    elif axis == 1:
+        if img_a.shape[0] != img_b.shape[0]:
+            img_b = cv2.resize(img_b, (img_b.shape[1], img_a.shape[0]))
+        return np.concatenate((img_a,img_b),axis=1)
+    else:
+        raise ValueError("Axis must be 0 or 1")
